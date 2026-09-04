@@ -49,7 +49,7 @@ export const AppShell: React.FC<{ children: React.ReactNode }> = ({ children }) 
         <main className="flex-1 overflow-y-auto min-h-[calc(100vh-3.5rem)] flex items-start justify-center p-0 sm:p-3 lg:p-4 bg-[#faf8f5]">
           {deviceMode === 'mobile' ? (
             /* Mobile Device Simulator Frame */
-            <div className="w-full max-w-[430px] my-0 sm:my-3 rounded-none sm:rounded-[40px] border-0 sm:border-8 sm:border-stone-800 bg-[#faf8f5] shadow-2xl overflow-hidden flex flex-col relative min-h-[100dvh] sm:min-h-[844px] max-h-none sm:max-h-[920px]">
+            <div className="mobile-device-frame w-full max-w-[430px] my-0 sm:my-3 rounded-none sm:rounded-[40px] border-0 sm:border-8 sm:border-stone-800 bg-[#faf8f5] shadow-2xl overflow-hidden flex flex-col relative min-h-[100dvh] sm:min-h-[844px] max-h-none sm:max-h-[920px]">
               {/* iPhone Notch & Mobile Status Bar */}
               <div className="h-10 bg-stone-100 px-6 flex items-center justify-between text-xs text-stone-700 shrink-0 select-none z-20 border-b border-stone-200">
                 <span className="font-semibold text-[11px] font-mono">10:24</span>

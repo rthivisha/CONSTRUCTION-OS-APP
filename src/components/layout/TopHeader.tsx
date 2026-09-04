@@ -8,7 +8,8 @@ import {
   Monitor, 
   Wrench,
   X,
-  Play
+  Play,
+  Bot
 } from 'lucide-react';
 import { useApp } from '../../context/AppContext';
 import { RoleType } from '../../types';
@@ -23,6 +24,7 @@ export const TopHeader: React.FC<{ onToggleSidebar?: () => void }> = ({ onToggle
     runIncidentSimulation, 
     deviceMode, 
     setDeviceMode,
+    setIsAssistantOpen
   } = useApp();
 
   const [isNotifOpen, setIsNotifOpen] = useState(false);
@@ -113,8 +115,19 @@ export const TopHeader: React.FC<{ onToggleSidebar?: () => void }> = ({ onToggle
           </button>
         </div>
 
-        {/* Right Controls: Search, Notifications & Developer/Testing Settings Trigger */}
+        {/* Right Controls: AIBot, Search, Notifications & Developer/Testing Settings Trigger */}
         <div className="flex items-center gap-2">
+          {/* Default AIBot Top Overlay Button */}
+          <button
+            onClick={() => setIsAssistantOpen(true)}
+            className="flex h-8 items-center gap-1.5 rounded-lg border border-amber-300/80 bg-amber-50 hover:bg-amber-100 text-stone-900 px-2.5 text-xs font-bold transition-all shadow-xs active:scale-95 group"
+            title="Open ConstructionOS AIBot"
+          >
+            <Bot className="h-4 w-4 text-amber-600 group-hover:scale-110 transition-transform" />
+            <span className="font-mono text-[11px]">AIBot</span>
+            <span className="h-1.5 w-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+          </button>
+
           {/* Search trigger */}
           <button
             onClick={() => setIsSearchOpen(true)}

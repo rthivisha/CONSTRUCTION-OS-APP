@@ -32,3 +32,32 @@
   background: #a8a29e;
 }
 
+/* Mobile device simulator frame overrides:
+   Guarantees that on desktop displays, desktop media queries (lg:, md:) do NOT
+   force multi-column desktop grids into the 390px-430px mobile frame. */
+.mobile-device-frame .lg\:grid-cols-4,
+.mobile-device-frame .lg\:grid-cols-12,
+.mobile-device-frame .lg\:grid-cols-3 {
+  grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+}
+
+.mobile-device-frame .lg\:grid-cols-12,
+.mobile-device-frame .md\:grid-cols-3,
+.mobile-device-frame .md\:grid-cols-2 {
+  grid-template-columns: repeat(1, minmax(0, 1fr)) !important;
+}
+
+.mobile-device-frame .lg\:col-span-7,
+.mobile-device-frame .lg\:col-span-5,
+.mobile-device-frame .lg\:col-span-8,
+.mobile-device-frame .lg\:col-span-4,
+.mobile-device-frame .lg\:col-span-12 {
+  grid-column: span 1 / span 1 !important;
+}
+
+/* Ensure cards in mobile views never overflow their boundaries */
+.mobile-device-frame * {
+  min-width: 0;
+}
+
+

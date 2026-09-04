@@ -131,46 +131,69 @@ Precision tooling for civil subcontractors, structural engineers, and MEP specia
 
 ## Getting Started
 
+This project uses [Bun](https://bun.sh) as its package manager and runtime.
+
 ```bash
 # Clone the repository
 git clone https://github.com/<your-org>/constructionos.git
 cd constructionos
 
 # Install dependencies
-npm install
+bun install
 
 # Configure environment variables
 cp .env.example .env
 # Set GEMINI_API_KEY and APP_URL in .env
 
 # Run the development server
-npm run dev
+bun run dev
 ```
 
 ### Build for production
 
 ```bash
-npm run build
-npm run start
+bun run build
+bun run start
 ```
+
+> **Note:** `.env` is git-ignored and holds your `GEMINI_API_KEY` / `VITE_GEMINI_API_KEY`. Never commit it, and rotate the key immediately if it's ever pasted, screenshotted, or shared anywhere outside your local machine.
 
 ---
 
 ## Project Structure (high level)
 
 ```
-src/
-├── context/
-│   └── AppContext.tsx        # Global state: roles, incidents, RFIs, NCRs, assistant context
-├── services/
-│   └── recoveryAgent.ts      # Multi-agent coordination & recovery engine
-├── components/                # Shared UI components
-├── pages/
-│   ├── supervisor/            # Site Supervisor screens
-│   ├── manager/                # Project Manager screens
-│   └── contractor/             # Contractor & Trade Engineer screens
-└── server/                     # Express backend, GenAI proxy
+constructionos/
+├── assets/
+├── scripts/
+│   └── test_recov...          # Recovery-agent test script
+├── src/
+│   ├── components/
+│   │   ├── common/            # Shared, role-agnostic UI components
+│   │   └── layout/             # AppShell, MobileNav, Sidebar, TopHeader
+│   ├── manager/                 # Project Manager screens
+│   ├── supervisor/              # Site Supervisor screens
+│   ├── contractor/              # Contractor & Trade Engineer screens
+│   ├── context/
+│   │   └── AppContext.tsx      # Global state: roles, incidents, RFIs, NCRs, assistant context
+│   ├── data/                     # Mock/seed data and static reference sets
+│   ├── services/
+│   │   └── recoveryAgent.ts    # Multi-agent coordination & recovery engine
+│   ├── types/                    # Shared TypeScript domain types (RoleType, ApprovalItem, etc.)
+│   ├── App.tsx
+│   ├── index.css
+│   └── main.tsx
+├── .env                          # Local secrets (git-ignored) — GEMINI_API_KEY, VITE_GEMINI_API_KEY
+├── .env.example
+├── .gitignore
+├── index.html
+├── metadata.json
+├── package.json
+├── tsconfig.json
+└── vite.config.ts
 ```
+
+> The Express/esbuild backend described in the Tech Stack section proxies GenAI calls server-side; confirm its exact location in your tree (e.g. a top-level `server/` or `api/` directory) and update this structure if it lives elsewhere.
 
 ---
 

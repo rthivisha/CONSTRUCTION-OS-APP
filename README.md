@@ -135,7 +135,7 @@ This project uses [Bun](https://bun.sh) as its package manager and runtime.
 
 ```bash
 # Clone the repository
-git clone https://github.com/<your-org>/constructionos.git
+git clone https://github.com/rthivisha/CONSTRUCTION-OS-APP.git
 cd constructionos
 
 # Install dependencies

@@ -1,0 +1,11 @@
+{
+  "name": "Remix ConstructionOS",
+  "description": "Multi-agent coordination system for construction sites connecting Site Supervisor, Project Manager, and Contractors with human-in-the-loop approval gates.",
+  "requestFramePermissions": [
+    "camera",
+    "microphone"
+  ],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
